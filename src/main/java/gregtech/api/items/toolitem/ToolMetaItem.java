@@ -353,7 +353,8 @@ public class ToolMetaItem<T extends ToolMetaItem<?>.MetaToolValueItem> extends M
 
     public boolean isUsable(ItemStack stack, int damage) {
         IElectricItem capability = stack.getCapability(GregtechCapabilities.CAPABILITY_ELECTRIC_ITEM, null);
-        return capability == null || capability.canUse(damage);
+        int energyAmount = ConfigHolder.energyUsageMultiplier * damage;
+        return capability == null || capability.canUse(energyAmount);
     }
 
     @Override
