@@ -35,6 +35,7 @@ public abstract class RecipeBuilder<R extends RecipeBuilder<R>> {
 
     protected int duration, EUt;
     protected boolean hidden = false;
+    protected boolean canBeBuffered = true;
     protected boolean needsEmptyOutput = false;
 
     protected EnumValidationResult recipeStatus = EnumValidationResult.VALID;
@@ -198,6 +199,10 @@ public abstract class RecipeBuilder<R extends RecipeBuilder<R>> {
         return (R) this;
     }
 
+    public R chancedOutput(ItemStack stack, int chance) {
+        return this.chancedOutput(stack, chance, 0);
+    }
+
     public R chancedOutput(ItemStack stack, int chance, int tierChanceBoost) {
         if (stack == null || stack.isEmpty()) {
             return (R) this;
@@ -226,6 +231,10 @@ public abstract class RecipeBuilder<R extends RecipeBuilder<R>> {
 
     public R hidden() {
         this.hidden = true;
+        return (R) this;
+    }
+
+    public R notOptimized() {
         return (R) this;
     }
 

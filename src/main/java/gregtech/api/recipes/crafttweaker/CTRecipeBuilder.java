@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
+import stanhebben.zenscript.annotations.Optional;
 
 import javax.annotation.Nullable;
 import java.util.Arrays;
@@ -82,7 +83,7 @@ public class CTRecipeBuilder {
     }
 
     @ZenMethod
-    public CTRecipeBuilder chancedOutput(IItemStack outputStack, int chanceValue, int tierChanceBoost) {
+    public CTRecipeBuilder chancedOutput(IItemStack outputStack, int chanceValue, @Optional(valueLong = 0) int tierChanceBoost) {
         this.backingBuilder.chancedOutput(CraftTweakerMC.getItemStack(outputStack), chanceValue, tierChanceBoost);
         return this;
     }

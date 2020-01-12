@@ -68,6 +68,16 @@ public class Recipe {
 
     public Recipe(List<CountableIngredient> inputs, List<ItemStack> outputs, TObjectIntMap<ItemStack> chancedOutputs,
                   List<FluidStack> fluidInputs, List<FluidStack> fluidOutputs,
+                  Map<String, Object> recipeProperties, int duration, int EUt, boolean hidden, boolean _canBeBuffered, boolean needsEmptyOutput) {
+        this(
+            inputs, outputs, chancedOutputs,
+            fluidInputs, fluidOutputs,
+            recipeProperties, duration, EUt, hidden, needsEmptyOutput
+        );
+    }
+
+    public Recipe(List<CountableIngredient> inputs, List<ItemStack> outputs, TObjectIntMap<ItemStack> chancedOutputs,
+                  List<FluidStack> fluidInputs, List<FluidStack> fluidOutputs,
                   Map<String, Object> recipeProperties, int duration, int EUt, boolean hidden, boolean needsEmptyOutput) {
         this.recipeProperties = ImmutableMap.copyOf(recipeProperties);
         this.inputs = NonNullList.create();

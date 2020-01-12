@@ -65,6 +65,19 @@ public class RecipeMap<R extends RecipeBuilder<R>> {
     public RecipeMap(String unlocalizedName,
                      int minInputs, int maxInputs, int minOutputs, int maxOutputs,
                      int minFluidInputs, int maxFluidInputs, int minFluidOutputs, int maxFluidOutputs,
+                     int _amperage,
+                     R defaultRecipe) {
+        this(
+            unlocalizedName,
+            minInputs, maxInputs, minOutputs, maxOutputs,
+            minFluidInputs, maxFluidInputs, minFluidOutputs, maxFluidOutputs,
+            defaultRecipe
+        );
+    }
+
+    public RecipeMap(String unlocalizedName,
+                     int minInputs, int maxInputs, int minOutputs, int maxOutputs,
+                     int minFluidInputs, int maxFluidInputs, int minFluidOutputs, int maxFluidOutputs,
                      R defaultRecipe) {
         this.unlocalizedName = unlocalizedName;
         this.slotOverlays = new TByteObjectHashMap<>();
@@ -178,6 +191,11 @@ public class RecipeMap<R extends RecipeBuilder<R>> {
         return this.findRecipe(voltage, GTUtility.itemHandlerToList(inputs), GTUtility.fluidHandlerToList(fluidInputs), outputFluidTankCapacity);
     }
 
+    @Nullable
+    public Recipe findRecipe(long voltage, IItemHandlerModifiable inputs, IMultipleTankHandler fluidInputs) {
+        return this.findRecipe(voltage, inputs, fluidInputs, Integer.MAX_VALUE);
+    }
+
     /**
      * Finds a Recipe matching the Fluid and ItemStack Inputs.
      *
@@ -202,6 +220,11 @@ public class RecipeMap<R extends RecipeBuilder<R>> {
         } else {
             return findByFluidInputs(voltage, inputs, fluidInputs);
         }
+    }
+
+    @Nullable
+    public Recipe findRecipe(long voltage, List<ItemStack> inputs, List<FluidStack> fluidInputs) {
+        return this.findRecipe(voltage, inputs, fluidInputs, Integer.MAX_VALUE);
     }
 
     @Nullable
