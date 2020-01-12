@@ -1,5 +1,10 @@
 ## Changelog
 
+### 1.7.2
+* Undo part of commit "work" (54d0866922e23f082efb97163aa0385e132fc5dc)
+* Repair some public APIs
+* Make it compatible with GregicAdditions-1.4.3 and GregsConstruct-1.0.1
+
 ### 1.7.1
 * Added block breakers with several tiers.
 * Refactor pump. Increase range and pump speed, made visuals better.
