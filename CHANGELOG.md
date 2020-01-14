@@ -1,5 +1,9 @@
 ## Changelog
 
+### 1.7.3
+* Fix battery over-charging bug
+* Fix infinite electric item bug
+
 ### 1.7.2
 * Undo part of commit "work" (54d0866922e23f082efb97163aa0385e132fc5dc)
 * Repair some public APIs
